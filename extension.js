@@ -11,9 +11,8 @@ const registerCommand = (context, { command }) => {
     const id = command.replace('extension.', '').replace(/_/g, '-');
     const settings = JSON.stringify({});
 
-    const { code, editor, selection } = getEditingData();
-
     const disposable = vscode.commands.registerCommand(command, () => {
+        const { code, editor, selection } = getEditingData();
         const child = exec(`node "${BIN}" -r ${id} -s "${settings}"`, (error, stdout, stderr) => {
             const refactoredCode = error || stderr || stdout;
             editor.edit((builder) => {
@@ -42,7 +41,7 @@ const getSelection = (editor) => {
     if (editor.selection.isEmpty) {
         return new editor.document.validateRange(new vscode.Range(
             new vscode.Position(0, 0),
-            new vscode.Position(editor.document.lineCount, 0)
+            new vscode.Position(editor.document.lineCount + 100, 0)
         ));
     }
     return editor.selection;
