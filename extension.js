@@ -1,30 +1,58 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
+const stream = require('stream');
 const vscode = require('vscode');
+const { exec } = require('child_process');
+const packageJson = require('./package.json');
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
-function activate(context) {
+const BIN = 'C:\\Users\\Kamil\\AppData\\Roaming\\Sublime Text 3\\Packages\\refucktoring\\dist\\index.js';
 
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "r-factor" is now active!');
+const commands = packageJson.contributes.commands;
 
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with  registerCommand
-    // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('extension.sayHello', function () {
-        // The code you place here will be executed every time your command is executed
+const registerCommand = (context, { command }) => {
+    const id = command.replace('extension.', '').replace(/_/g, '-');
+    const settings = JSON.stringify({});
 
-        // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World!');
+    const { code, editor, selection } = getEditingData();
+
+    const disposable = vscode.commands.registerCommand(command, () => {
+        const child = exec(`node "${BIN}" -r ${id} -s "${settings}"`, (error, stdout, stderr) => {
+            const refactoredCode = error || stderr || stdout;
+            editor.edit((builder) => {
+                builder.replace(selection, '');
+                builder.insert(new vscode.Position(0, 0), refactoredCode);
+            });
+        });
+
+        const stdinStream = new stream.Readable();
+        stdinStream.push(code);
+        stdinStream.push(null);
+        stdinStream.pipe(child.stdin);
     });
 
     context.subscriptions.push(disposable);
-}
-exports.activate = activate;
+};
 
-// this method is called when your extension is deactivated
-function deactivate() {
-}
-exports.deactivate = deactivate;
+const getEditingData = () => {
+    const editor = vscode.window.activeTextEditor;
+    let selection = getSelection(editor);
+    let code = getCode(editor, selection);
+    return { code, editor, selection };
+};
+
+const getSelection = (editor) => {
+    if (editor.selection.isEmpty) {
+        return new editor.document.validateRange(new vscode.Range(
+            new vscode.Position(0, 0),
+            new vscode.Position(editor.document.lineCount, 0)
+        ));
+    }
+    return editor.selection;
+};
+
+const getCode = (editor) => editor ? editor.document.getText() : '';
+
+exports.activate = (context) => commands.forEach(
+    (command) => registerCommand(context, command)
+);
+
+exports.deactivate = () => null;
+
