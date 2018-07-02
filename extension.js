@@ -15,10 +15,7 @@ const registerCommand = (context, { command }) => {
         const { code, editor, selection } = getEditingData();
         const child = exec(`node "${BIN}" -r ${id} -s "${settings}"`, (error, stdout, stderr) => {
             const refactoredCode = error || stderr || stdout;
-            editor.edit((builder) => {
-                builder.replace(selection, '');
-                builder.insert(new vscode.Position(0, 0), refactoredCode);
-            });
+            editor.edit((builder) => builder.replace(selection, refactoredCode));
         });
 
         const stdinStream = new stream.Readable();
@@ -47,7 +44,7 @@ const getSelection = (editor) => {
     return editor.selection;
 };
 
-const getCode = (editor) => editor ? editor.document.getText() : '';
+const getCode = (editor, selection) => editor ? editor.document.getText(selection) : '';
 
 exports.activate = (context) => commands.forEach(
     (command) => registerCommand(context, command)
