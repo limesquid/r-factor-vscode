@@ -5,16 +5,14 @@ const packageJson = require('./package.json');
 
 const BIN = 'C:\\Users\\Kamil\\AppData\\Roaming\\Sublime Text 3\\Packages\\refucktoring\\dist\\index.js';
 
-const commands = packageJson.contributes.commands;
-
 const registerCommand = (context, { command }) => {
     const disposable = vscode.commands.registerCommand(command, () => {
         const { code, editor, selection } = getEditingData();
-        const child = exec(getExecutableCommand(command), (error, stdout, stderr) => {
+        const executableCommand = getExecutableCommand(command);
+        const child = exec(executableCommand, (error, stdout, stderr) => {
             const refactoredCode = error || stderr || stdout;
             editor.edit((builder) => builder.replace(selection, refactoredCode));
         });
-
         const stdinStream = new stream.Readable();
         stdinStream.push(code);
         stdinStream.push(null);
@@ -27,14 +25,10 @@ const registerCommand = (context, { command }) => {
 const getExecutableCommand = (command) => {
     const id = command.replace('extension.', '').replace(/_/g, '-');
     const settings = JSON.stringify(getConfiguration());
-    
     return [
-        'node',
-        `"${BIN}"`,
-        '-r',
-        id,
-        '-s',
-        settings.replace(/"/g, '\\"')
+        'node', `"${BIN}"`,
+        '-r', id,
+        '-s', settings.replace(/"/g, '\\"')
     ].join(' ');
 };
 
@@ -70,7 +64,7 @@ const getConfiguration = () => {
 
 const getCode = (editor, selection) => editor ? editor.document.getText(selection) : '';
 
-exports.activate = (context) => commands.forEach(
+exports.activate = (context) => packageJson.contributes.commands.forEach(
     (command) => registerCommand(context, command)
 );
 
