@@ -8,12 +8,9 @@ const BIN = 'C:\\Users\\Kamil\\AppData\\Roaming\\Sublime Text 3\\Packages\\refuc
 const commands = packageJson.contributes.commands;
 
 const registerCommand = (context, { command }) => {
-    const id = command.replace('extension.', '').replace(/_/g, '-');
-    const settings = JSON.stringify({});
-
     const disposable = vscode.commands.registerCommand(command, () => {
         const { code, editor, selection } = getEditingData();
-        const child = exec(`node "${BIN}" -r ${id} -s "${settings}"`, (error, stdout, stderr) => {
+        const child = exec(getExecutableCommand(command), (error, stdout, stderr) => {
             const refactoredCode = error || stderr || stdout;
             editor.edit((builder) => builder.replace(selection, refactoredCode));
         });
@@ -25,6 +22,20 @@ const registerCommand = (context, { command }) => {
     });
 
     context.subscriptions.push(disposable);
+};
+
+const getExecutableCommand = (command) => {
+    const id = command.replace('extension.', '').replace(/_/g, '-');
+    const settings = JSON.stringify(getConfiguration());
+    
+    return [
+        'node',
+        `"${BIN}"`,
+        '-r',
+        id,
+        '-s',
+        settings.replace(/"/g, '\\"')
+    ].join(' ');
 };
 
 const getEditingData = () => {
@@ -44,6 +55,19 @@ const getSelection = (editor) => {
     return editor.selection;
 };
 
+const getConfiguration = () => {
+    const configuration = vscode.workspace.getConfiguration('r-factor');
+    return {
+        'component-superclass': configuration.get('component-superclass'),
+        'end-of-line': configuration.get('end-of-line'),
+        'functional-component-type': configuration.get('functional-component-type'),
+        'indent': configuration.get('indent'),
+        'modules-order': configuration.get('modules-order'),
+        'quotes': configuration.get('quotes'),
+        'semicolons': configuration.get('semicolons')
+    };
+}
+
 const getCode = (editor, selection) => editor ? editor.document.getText(selection) : '';
 
 exports.activate = (context) => commands.forEach(
@@ -51,4 +75,3 @@ exports.activate = (context) => commands.forEach(
 );
 
 exports.deactivate = () => null;
-

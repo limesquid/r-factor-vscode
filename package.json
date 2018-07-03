@@ -75,7 +75,71 @@
                 "title": "R-Factor: Toggle component type",
                 "command": "extension.toggle_component_type"
             }
-        ]
+        ],
+        "configuration": {
+            "title": "R-Factor configuration",
+            "properties": {
+                "r-factor.component-superclass": {
+                    "type": [ "string" ],
+                    "scope": "window",
+                    "default": "Component",
+                    "description": "Component superclass (Component or PureComponent)"
+                },
+                "r-factor.end-of-line": {
+                    "type": [ "string" ],
+                    "scope": "window",
+                    "default": "\n",
+                    "description": "End of line characters"
+                },
+                "r-factor.functional-component-type": {
+                    "type": [ "string" ],
+                    "scope": "window",
+                    "default": "arrow",
+                    "description": "Functional component type (arrow or function)"
+                },
+                "r-factor.indent": {
+                    "type": [ "string", "number" ],
+                    "scope": "window",
+                    "default": 2,
+                    "description": "Indent"
+                },
+                "r-factor.modules-order": {
+                    "type": [ "string", "array" ],
+                    "scope": "window",
+                    "default": [
+                        "react",
+                        "react-dom",
+                        "prop-types",
+                        "classnames",
+                        "lodash",
+                        "lodash-es",
+                        "underscore",
+                        "redux-saga",
+                        "redux-saga/effects",
+                        "react-redux",
+                        "react-router-redux",
+                        "redux-actions",
+                        "reselect",
+                        "re-reselect",
+                        "react-router-dom",
+                        "react-hot-loader"
+                    ],
+                    "description": "Modules order"
+                },
+                "r-factor.quotes": {
+                    "type": [ "string" ],
+                    "scope": "window",
+                    "default": "single",
+                    "description": "Quotes (backtick, single or double)"
+                },
+                "r-factor.semicolons": {
+                    "type": [ "bool" ],
+                    "scope": "window",
+                    "default": true,
+                    "description": "Semicolons"
+                }
+            }
+        }
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",
