@@ -51,16 +51,17 @@ const getSelection = (editor) => {
 
 const getConfiguration = () => {
     const configuration = vscode.workspace.getConfiguration('r-factor');
-    return {
-        'component-superclass': configuration.get('component-superclass'),
-        'end-of-line': configuration.get('end-of-line'),
-        'functional-component-type': configuration.get('functional-component-type'),
-        'indent': configuration.get('indent'),
-        'modules-order': configuration.get('modules-order'),
-        'quotes': configuration.get('quotes'),
-        'semicolons': configuration.get('semicolons')
-    };
-}
+    return Object.keys(packageJson.contributes.configuration.properties).reduce(
+        (config, key) => {
+            const name = key.split('.')[1];
+            return {
+                ...config,
+                [name]: configuration[name]
+            };
+        },
+        {}
+    );
+};
 
 const getCode = (editor, selection) => editor ? editor.document.getText(selection) : '';
 

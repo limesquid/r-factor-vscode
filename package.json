@@ -12,9 +12,17 @@
     ],
     "activationEvents": [
         "onCommand:extension.add_classname",
+        "onCommand:extension.connect",
+        "onCommand:extension.connect_map_dispatch_to_props",
+        "onCommand:extension.connect_map_state_to_props",
+        "onCommand:extension.connect_merge_props",
         "onCommand:extension.convert_to_arrow_component",
         "onCommand:extension.convert_to_class_component",
         "onCommand:extension.convert_to_function_component",
+        "onCommand:extension.disconnect",
+        "onCommand:extension.disconnect_map_dispatch_to_props",
+        "onCommand:extension.disconnect_map_state_to_props",
+        "onCommand:extension.disconnect_merge_props",
         "onCommand:extension.generate_prop_types",
         "onCommand:extension.move_default_props_out_of_class",
         "onCommand:extension.move_default_props_to_class",
@@ -22,7 +30,8 @@
         "onCommand:extension.move_prop_types_to_class",
         "onCommand:extension.sort_attributes",
         "onCommand:extension.sort_imports",
-        "onCommand:extension.toggle_component_type"
+        "onCommand:extension.toggle_component_type",
+        "onCommand:extension.toggle_with_router_hoc"
     ],
     "main": "./extension",
     "contributes": {
@@ -30,6 +39,22 @@
             {
                 "title": "R-Factor: Add className",
                 "command": "extension.add_classname"
+            },
+            {
+                "title": "R-Factor: Connect",
+                "command": "extension.connect"
+            },
+            {
+                "title": "R-Factor: Connect mapDispatchToProps",
+                "command": "extension.connect_map_dispatch_to_props"
+            },
+            {
+                "title": "R-Factor: Connect mapStateToProps",
+                "command": "extension.connect_map_state_to_props"
+            },
+            {
+                "title": "R-Factor: Connect mergeProps",
+                "command": "extension.connect_merge_props"
             },
             {
                 "title": "R-Factor: Convert to arrow component",
@@ -42,6 +67,22 @@
             {
                 "title": "R-Factor: Convert to function component",
                 "command": "extension.convert_to_function_component"
+            },
+            {
+                "title": "R-Factor: Disconnect",
+                "command": "extension.disconnect"
+            },
+            {
+                "title": "R-Factor: Disconnect mapDispatchToProps",
+                "command": "extension.disconnect_map_dispatch_to_props"
+            },
+            {
+                "title": "R-Factor: Disconnect mapStateToProps",
+                "command": "extension.disconnect_map_state_to_props"
+            },
+            {
+                "title": "R-Factor: Disconnect mergeProps",
+                "command": "extension.disconnect_merge_props"
             },
             {
                 "title": "R-Factor: Generate propTypes",
@@ -74,16 +115,38 @@
             {
                 "title": "R-Factor: Toggle component type",
                 "command": "extension.toggle_component_type"
+            },
+            {
+                "title": "R-Factor: Toggle withRouter HOC",
+                "command": "extension.toggle_with_router_hoc"
             }
         ],
         "configuration": {
             "title": "R-Factor configuration",
             "properties": {
+                "r-factor.component-name-collision-pattern": {
+                    "type": [ "string" ],
+                    "scope": "window",
+                    "default": "${name}Component",
+                    "description": "Component name collision pattern"
+                },
                 "r-factor.component-superclass": {
                     "type": [ "string" ],
                     "scope": "window",
                     "default": "Component",
                     "description": "Component superclass (Component or PureComponent)"
+                },
+                "r-factor.default-component-name": {
+                    "type": [ "string" ],
+                    "scope": "window",
+                    "default": "Component",
+                    "description": "Default component name"
+                },
+                "r-factor.default-hoc-component-name": {
+                    "type": [ "string" ],
+                    "scope": "window",
+                    "default": "InnerComponent",
+                    "description": "Default HOC component name"
                 },
                 "r-factor.end-of-line": {
                     "type": [ "string" ],
@@ -102,6 +165,36 @@
                     "scope": "window",
                     "default": 2,
                     "description": "Indent"
+                },
+                "r-factor.map-dispatch-to-props-name": {
+                    "type": [ "string" ],
+                    "scope": "window",
+                    "default": "mapDispatchToProps",
+                    "description": "mapDispatchToProps name"
+                },
+                "r-factor.map-dispatch-to-props-prefer-object": {
+                    "type": [ "bool" ],
+                    "scope": "window",
+                    "default": true,
+                    "description": "Prefer object mapDispatchToProps value"
+                },
+                "r-factor.map-state-to-props-name": {
+                    "type": [ "string" ],
+                    "scope": "window",
+                    "default": "mapStateToProps",
+                    "description": "mapStateToProps name"
+                },
+                "r-factor.map-state-to-props-prefer-one-line": {
+                    "type": [ "bool" ],
+                    "scope": "window",
+                    "default": true,
+                    "description": "Prefer one-line mapStateToProps value"
+                },
+                "r-factor.merge-props-name": {
+                    "type": [ "string" ],
+                    "scope": "window",
+                    "default": "mergeProps",
+                    "description": "mergeProps name"
                 },
                 "r-factor.modules-order": {
                     "type": [ "string", "array" ],
