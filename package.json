@@ -24,10 +24,8 @@
         "onCommand:extension.disconnect_map_state_to_props",
         "onCommand:extension.disconnect_merge_props",
         "onCommand:extension.generate_prop_types",
-        "onCommand:extension.move_default_props_out_of_class",
-        "onCommand:extension.move_default_props_to_class",
-        "onCommand:extension.move_prop_types_out_of_class",
-        "onCommand:extension.move_prop_types_to_class",
+        "onCommand:extension.move_default_props_and_prop_types_out_of_class",
+        "onCommand:extension.move_default_props_and_prop_types_to_class",
         "onCommand:extension.sort_attributes",
         "onCommand:extension.sort_imports",
         "onCommand:extension.toggle_component_type",
@@ -172,23 +170,11 @@
                     "default": "mapDispatchToProps",
                     "description": "mapDispatchToProps name"
                 },
-                "r-factor.map-dispatch-to-props-prefer-object": {
-                    "type": [ "bool" ],
-                    "scope": "window",
-                    "default": true,
-                    "description": "Prefer object mapDispatchToProps value"
-                },
                 "r-factor.map-state-to-props-name": {
                     "type": [ "string" ],
                     "scope": "window",
                     "default": "mapStateToProps",
                     "description": "mapStateToProps name"
-                },
-                "r-factor.map-state-to-props-prefer-one-line": {
-                    "type": [ "bool" ],
-                    "scope": "window",
-                    "default": true,
-                    "description": "Prefer one-line mapStateToProps value"
                 },
                 "r-factor.merge-props-name": {
                     "type": [ "string" ],
@@ -230,6 +216,18 @@
                     "scope": "window",
                     "default": true,
                     "description": "Semicolons"
+                },
+                "r-factor.trailing-commas": {
+                    "type": [ "bool" ],
+                    "scope": "window",
+                    "default": false,
+                    "description": "Trailing commas"
+                },
+                "r-factor.use-map-dispatch-to-props-shorthand": {
+                    "type": [ "bool" ],
+                    "scope": "window",
+                    "default": false,
+                    "description": "Prefer object version of mapDispatchToProps"
                 }
             }
         }
