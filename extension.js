@@ -24,9 +24,11 @@ const registerCommand = (context, { command }) => {
 
 const getExecutableCommand = (command) => {
     const id = command.replace('extension.', '').replace(/_/g, '-');
-    const settings = JSON.stringify(getConfiguration());
+    const configuration = getConfiguration();
+    const NODE_BIN = configuration['NODE_BIN'];
+    const settings = JSON.stringify(configuration);
     return [
-        'node', `"${BIN}"`,
+        NODE_BIN, `"${BIN}"`,
         '-r', id,
         '-s', settings.replace(/"/g, '\\"')
     ].join(' ');

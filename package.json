@@ -228,6 +228,12 @@
                     "scope": "window",
                     "default": false,
                     "description": "Prefer object version of mapDispatchToProps"
+                },
+                "r-factor.NODE_BIN": {
+                    "type": [ "string" ],
+                    "scope": "window",
+                    "default": "node",
+                    "description": "Node.js binary path"
                 }
             }
         }
