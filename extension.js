@@ -56,10 +56,9 @@ const getConfiguration = () => {
     return Object.keys(packageJson.contributes.configuration.properties).reduce(
         (config, key) => {
             const name = key.split('.')[1];
-            return {
-                ...config,
+            return Object.assign({}, config, {
                 [name]: configuration[name]
-            };
+            });
         },
         {}
     );
