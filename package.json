@@ -1,15 +1,26 @@
 {
     "name": "r-factor",
-    "displayName": "R-Factor",
-    "description": "React & Redux Refactoring Tools",
     "version": "0.0.1",
     "publisher": "r-factor",
     "engines": {
+        "node": ">=6.0.0",
         "vscode": "^1.24.0"
     },
+    "license": "LICENSE",
+    "displayName": "R-Factor",
+    "description": "React & Redux Refactoring Tools",    
     "categories": [
         "Other"
     ],
+    "keywords": [
+        "react",
+        "redux",
+        "r-factor",
+        "refactoring",
+        "convert",
+        "transform"
+    ],
+    "main": "./extension",
     "activationEvents": [
         "onCommand:extension.add_classname",
         "onCommand:extension.connect",
@@ -31,7 +42,6 @@
         "onCommand:extension.toggle_component_type",
         "onCommand:extension.toggle_with_router_hoc"
     ],
-    "main": "./extension",
     "contributes": {
         "commands": [
             {
@@ -249,5 +259,6 @@
         "eslint": "^4.11.0",
         "@types/node": "^7.0.43",
         "@types/mocha": "^2.2.42"
-    }
+    },
+    "icon": "images/r-factor.png"
 }
