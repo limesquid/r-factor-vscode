@@ -8,7 +8,7 @@
     },
     "license": "LICENSE",
     "displayName": "R-Factor",
-    "description": "React & Redux Refactoring Tools",    
+    "description": "React & Redux Refactoring Tools",
     "categories": [
         "Other"
     ],
@@ -27,6 +27,7 @@
         "onCommand:extension.connect_map_dispatch_to_props",
         "onCommand:extension.connect_map_state_to_props",
         "onCommand:extension.connect_merge_props",
+        "onCommand:extension.convert_svg_to_component",
         "onCommand:extension.convert_to_arrow_component",
         "onCommand:extension.convert_to_class_component",
         "onCommand:extension.convert_to_function_component",
@@ -63,6 +64,10 @@
             {
                 "title": "R-Factor: Connect mergeProps",
                 "command": "extension.connect_merge_props"
+            },
+            {
+                "title": "R-Factor: Convert SVG to component",
+                "command": "extension.convert_svg_to_component"
             },
             {
                 "title": "R-Factor: Convert to arrow component",
@@ -227,6 +232,12 @@
                     "scope": "window",
                     "default": true,
                     "description": "Semicolons"
+                },
+                "r-factor.svg-component-type": {
+                    "type": [ "string" ],
+                    "scope": "window",
+                    "default": "arrow",
+                    "description": "SVG component type"
                 },
                 "r-factor.trailing-commas": {
                     "type": [ "bool" ],
