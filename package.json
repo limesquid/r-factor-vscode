@@ -1,251 +1,251 @@
 {
-    "name": "r-factor",
-    "version": "0.0.1",
-    "publisher": "r-factor",
-    "engines": {
-        "node": ">=6.0.0",
-        "vscode": "^1.24.0"
-    },
-    "license": "LICENSE",
-    "displayName": "R-Factor",
-    "description": "React & Redux Refactoring Tools",    
-    "categories": [
-        "Other"
+  "name": "r-factor",
+  "version": "0.0.1",
+  "publisher": "r-factor",
+  "engines": {
+    "node": ">=6.0.0",
+    "vscode": "^1.24.0"
+  },
+  "license": "LICENSE",
+  "displayName": "R-Factor",
+  "description": "React & Redux Refactoring Tools",  
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "react",
+    "redux",
+    "r-factor",
+    "refactoring",
+    "convert",
+    "transform"
+  ],
+  "main": "./extension",
+  "activationEvents": [
+    "*"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "title": "R-Factor: Add className",
+        "command": "extension.add_classname"
+      },
+      {
+        "title": "R-Factor: Connect",
+        "command": "extension.connect"
+      },
+      {
+        "title": "R-Factor: Connect mapDispatchToProps",
+        "command": "extension.connect_map_dispatch_to_props"
+      },
+      {
+        "title": "R-Factor: Connect mapStateToProps",
+        "command": "extension.connect_map_state_to_props"
+      },
+      {
+        "title": "R-Factor: Connect mergeProps",
+        "command": "extension.connect_merge_props"
+      },
+      {
+        "title": "R-Factor: Convert to arrow component",
+        "command": "extension.convert_to_arrow_component"
+      },
+      {
+        "title": "R-Factor: Convert to class component",
+        "command": "extension.convert_to_class_component"
+      },
+      {
+        "title": "R-Factor: Convert to function component",
+        "command": "extension.convert_to_function_component"
+      },
+      {
+        "title": "R-Factor: Disconnect",
+        "command": "extension.disconnect"
+      },
+      {
+        "title": "R-Factor: Disconnect mapDispatchToProps",
+        "command": "extension.disconnect_map_dispatch_to_props"
+      },
+      {
+        "title": "R-Factor: Disconnect mapStateToProps",
+        "command": "extension.disconnect_map_state_to_props"
+      },
+      {
+        "title": "R-Factor: Disconnect mergeProps",
+        "command": "extension.disconnect_merge_props"
+      },
+      {
+        "title": "R-Factor: Generate propTypes",
+        "command": "extension.generate_prop_types"
+      },
+      {
+        "title": "R-Factor: Move defaultProps out of class",
+        "command": "extension.move_default_props_out_of_class"
+      },
+      {
+        "title": "R-Factor: Move defaultProps to class",
+        "command": "extension.move_default_props_to_class"
+      },
+      {
+        "title": "R-Factor: Move propTypes out of class",
+        "command": "extension.move_prop_types_out_of_class"
+      },
+      {
+        "title": "R-Factor: Move propTypes to class",
+        "command": "extension.move_prop_types_to_class"
+      },
+      {
+        "title": "R-Factor: Sort attributes in objects",
+        "command": "extension.sort_attributes"
+      },
+      {
+        "title": "R-Factor: Sort imports",
+        "command": "extension.sort_imports"
+      },
+      {
+        "title": "R-Factor: Toggle component type",
+        "command": "extension.toggle_component_type"
+      },
+      {
+        "title": "R-Factor: Toggle withRouter HOC",
+        "command": "extension.toggle_with_router_hoc"
+      }
     ],
-    "keywords": [
-        "react",
-        "redux",
-        "r-factor",
-        "refactoring",
-        "convert",
-        "transform"
-    ],
-    "main": "./extension",
-    "activationEvents": [
-        "*"
-    ],
-    "contributes": {
-        "commands": [
-            {
-                "title": "R-Factor: Add className",
-                "command": "extension.add_classname"
-            },
-            {
-                "title": "R-Factor: Connect",
-                "command": "extension.connect"
-            },
-            {
-                "title": "R-Factor: Connect mapDispatchToProps",
-                "command": "extension.connect_map_dispatch_to_props"
-            },
-            {
-                "title": "R-Factor: Connect mapStateToProps",
-                "command": "extension.connect_map_state_to_props"
-            },
-            {
-                "title": "R-Factor: Connect mergeProps",
-                "command": "extension.connect_merge_props"
-            },
-            {
-                "title": "R-Factor: Convert to arrow component",
-                "command": "extension.convert_to_arrow_component"
-            },
-            {
-                "title": "R-Factor: Convert to class component",
-                "command": "extension.convert_to_class_component"
-            },
-            {
-                "title": "R-Factor: Convert to function component",
-                "command": "extension.convert_to_function_component"
-            },
-            {
-                "title": "R-Factor: Disconnect",
-                "command": "extension.disconnect"
-            },
-            {
-                "title": "R-Factor: Disconnect mapDispatchToProps",
-                "command": "extension.disconnect_map_dispatch_to_props"
-            },
-            {
-                "title": "R-Factor: Disconnect mapStateToProps",
-                "command": "extension.disconnect_map_state_to_props"
-            },
-            {
-                "title": "R-Factor: Disconnect mergeProps",
-                "command": "extension.disconnect_merge_props"
-            },
-            {
-                "title": "R-Factor: Generate propTypes",
-                "command": "extension.generate_prop_types"
-            },
-            {
-                "title": "R-Factor: Move defaultProps out of class",
-                "command": "extension.move_default_props_out_of_class"
-            },
-            {
-                "title": "R-Factor: Move defaultProps to class",
-                "command": "extension.move_default_props_to_class"
-            },
-            {
-                "title": "R-Factor: Move propTypes out of class",
-                "command": "extension.move_prop_types_out_of_class"
-            },
-            {
-                "title": "R-Factor: Move propTypes to class",
-                "command": "extension.move_prop_types_to_class"
-            },
-            {
-                "title": "R-Factor: Sort attributes in objects",
-                "command": "extension.sort_attributes"
-            },
-            {
-                "title": "R-Factor: Sort imports",
-                "command": "extension.sort_imports"
-            },
-            {
-                "title": "R-Factor: Toggle component type",
-                "command": "extension.toggle_component_type"
-            },
-            {
-                "title": "R-Factor: Toggle withRouter HOC",
-                "command": "extension.toggle_with_router_hoc"
-            }
-        ],
-        "configuration": {
-            "title": "R-Factor configuration",
-            "properties": {
-                "r-factor.component-name-collision-pattern": {
-                    "type": [ "string" ],
-                    "scope": "window",
-                    "default": "${name}Component",
-                    "description": "Component name collision pattern"
-                },
-                "r-factor.component-superclass": {
-                    "type": [ "string" ],
-                    "scope": "window",
-                    "default": "Component",
-                    "description": "Component superclass (Component or PureComponent)"
-                },
-                "r-factor.default-component-name": {
-                    "type": [ "string" ],
-                    "scope": "window",
-                    "default": "Component",
-                    "description": "Default component name"
-                },
-                "r-factor.default-hoc-component-name": {
-                    "type": [ "string" ],
-                    "scope": "window",
-                    "default": "InnerComponent",
-                    "description": "Default HOC component name"
-                },
-                "r-factor.end-of-line": {
-                    "type": [ "string" ],
-                    "scope": "window",
-                    "default": "\n",
-                    "description": "End of line characters"
-                },
-                "r-factor.functional-component-type": {
-                    "type": [ "string" ],
-                    "scope": "window",
-                    "default": "arrow",
-                    "description": "Functional component type (arrow or function)"
-                },
-                "r-factor.indent": {
-                    "type": [ "string", "number" ],
-                    "scope": "window",
-                    "default": 2,
-                    "description": "Indent"
-                },
-                "r-factor.map-dispatch-to-props-name": {
-                    "type": [ "string" ],
-                    "scope": "window",
-                    "default": "mapDispatchToProps",
-                    "description": "mapDispatchToProps name"
-                },
-                "r-factor.map-state-to-props-name": {
-                    "type": [ "string" ],
-                    "scope": "window",
-                    "default": "mapStateToProps",
-                    "description": "mapStateToProps name"
-                },
-                "r-factor.merge-props-name": {
-                    "type": [ "string" ],
-                    "scope": "window",
-                    "default": "mergeProps",
-                    "description": "mergeProps name"
-                },
-                "r-factor.modules-order": {
-                    "type": [ "string", "array" ],
-                    "scope": "window",
-                    "default": [
-                        "react",
-                        "react-dom",
-                        "prop-types",
-                        "classnames",
-                        "lodash",
-                        "lodash-es",
-                        "underscore",
-                        "redux-saga",
-                        "redux-saga/effects",
-                        "react-redux",
-                        "react-router-redux",
-                        "redux-actions",
-                        "reselect",
-                        "re-reselect",
-                        "react-router",
-                        "react-router-dom",
-                        "react-hot-loader"
-                    ],
-                    "description": "Modules order"
-                },
-                "r-factor.quotes": {
-                    "type": [ "string" ],
-                    "scope": "window",
-                    "default": "single",
-                    "description": "Quotes (backtick, single or double)"
-                },
-                "r-factor.semicolons": {
-                    "type": [ "bool" ],
-                    "scope": "window",
-                    "default": true,
-                    "description": "Semicolons"
-                },
-                "r-factor.svg-component-type": {
-                    "type": [ "string" ],
-                    "scope": "window",
-                    "default": "arrow",
-                    "description": "arrow, function or class"
-                },
-                "r-factor.trailing-commas": {
-                    "type": [ "bool" ],
-                    "scope": "window",
-                    "default": false,
-                    "description": "Trailing commas"
-                },
-                "r-factor.use-map-dispatch-to-props-shorthand": {
-                    "type": [ "bool" ],
-                    "scope": "window",
-                    "default": false,
-                    "description": "Prefer object version of mapDispatchToProps"
-                },
-                "r-factor.NODE_BIN": {
-                    "type": [ "string" ],
-                    "scope": "window",
-                    "default": "node",
-                    "description": "Node.js binary path"
-                }
-            }
+    "configuration": {
+      "title": "R-Factor configuration",
+      "properties": {
+        "r-factor.component-name-collision-pattern": {
+          "type": [ "string" ],
+          "scope": "window",
+          "default": "${name}Component",
+          "description": "Component name collision pattern"
+        },
+        "r-factor.component-superclass": {
+          "type": [ "string" ],
+          "scope": "window",
+          "default": "Component",
+          "description": "Component superclass (Component or PureComponent)"
+        },
+        "r-factor.default-component-name": {
+          "type": [ "string" ],
+          "scope": "window",
+          "default": "Component",
+          "description": "Default component name"
+        },
+        "r-factor.default-hoc-component-name": {
+          "type": [ "string" ],
+          "scope": "window",
+          "default": "InnerComponent",
+          "description": "Default HOC component name"
+        },
+        "r-factor.end-of-line": {
+          "type": [ "string" ],
+          "scope": "window",
+          "default": "\n",
+          "description": "End of line characters"
+        },
+        "r-factor.functional-component-type": {
+          "type": [ "string" ],
+          "scope": "window",
+          "default": "arrow",
+          "description": "Functional component type (arrow or function)"
+        },
+        "r-factor.indent": {
+          "type": [ "string", "number" ],
+          "scope": "window",
+          "default": 2,
+          "description": "Indent"
+        },
+        "r-factor.map-dispatch-to-props-name": {
+          "type": [ "string" ],
+          "scope": "window",
+          "default": "mapDispatchToProps",
+          "description": "mapDispatchToProps name"
+        },
+        "r-factor.map-state-to-props-name": {
+          "type": [ "string" ],
+          "scope": "window",
+          "default": "mapStateToProps",
+          "description": "mapStateToProps name"
+        },
+        "r-factor.merge-props-name": {
+          "type": [ "string" ],
+          "scope": "window",
+          "default": "mergeProps",
+          "description": "mergeProps name"
+        },
+        "r-factor.modules-order": {
+          "type": [ "string", "array" ],
+          "scope": "window",
+          "default": [
+            "react",
+            "react-dom",
+            "prop-types",
+            "classnames",
+            "lodash",
+            "lodash-es",
+            "underscore",
+            "redux-saga",
+            "redux-saga/effects",
+            "react-redux",
+            "react-router-redux",
+            "redux-actions",
+            "reselect",
+            "re-reselect",
+            "react-router",
+            "react-router-dom",
+            "react-hot-loader"
+          ],
+          "description": "Modules order"
+        },
+        "r-factor.quotes": {
+          "type": [ "string" ],
+          "scope": "window",
+          "default": "single",
+          "description": "Quotes (backtick, single or double)"
+        },
+        "r-factor.semicolons": {
+          "type": [ "bool" ],
+          "scope": "window",
+          "default": true,
+          "description": "Semicolons"
+        },
+        "r-factor.svg-component-type": {
+          "type": [ "string" ],
+          "scope": "window",
+          "default": "arrow",
+          "description": "arrow, function or class"
+        },
+        "r-factor.trailing-commas": {
+          "type": [ "bool" ],
+          "scope": "window",
+          "default": false,
+          "description": "Trailing commas"
+        },
+        "r-factor.use-map-dispatch-to-props-shorthand": {
+          "type": [ "bool" ],
+          "scope": "window",
+          "default": false,
+          "description": "Prefer object version of mapDispatchToProps"
+        },
+        "r-factor.NODE_BIN": {
+          "type": [ "string" ],
+          "scope": "window",
+          "default": "node",
+          "description": "Node.js binary path"
         }
-    },
-    "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install"
-    },
-    "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.6",
-        "eslint": "^4.11.0",
-        "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
-    },
-    "icon": "images/r-factor.png"
+      }
+    }
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "typescript": "^2.6.1",
+    "vscode": "^1.1.6",
+    "eslint": "^4.11.0",
+    "@types/node": "^7.0.43",
+    "@types/mocha": "^2.2.42"
+  },
+  "icon": "images/r-factor.png"
 }
