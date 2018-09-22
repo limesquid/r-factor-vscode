@@ -1,6 +1,6 @@
 {
   "name": "r-factor",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "publisher": "r-factor",
   "engines": {
     "node": ">=6.0.0",
@@ -16,6 +16,7 @@
     "react",
     "redux",
     "r-factor",
+    "refactor",
     "refactoring",
     "convert",
     "transform"
