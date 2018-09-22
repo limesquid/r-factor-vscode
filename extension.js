@@ -1,37 +1,42 @@
-const stream = require('stream');
 const vscode = require('vscode');
-const { exec } = require('child_process');
 const packageJson = require('./package.json');
+const { WARMUP_CODE, WARMUP_COUNT, WARMUP_REFACTORING } = require('./warm-up');
 
 const BIN = 'C:\\Users\\Kamil\\AppData\\Roaming\\Sublime Text 3\\Packages\\refucktoring\\dist\\index.js';
+const API = require(BIN);
+const license = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsTmFtZSI6ImthbWlsIGFkYW0gbWllbG5payIsImVtYWlsIjoibGVlMjA3QGdtYWlsLmNvbSIsImtleSI6ImM5NTJmNGU5MWUxMmMwZGE1ODllYmU5YmEwOGNjMTkzMDhlNDBiNmM5NjBlNGFjNDRmNTZjNGRkZGQ1Y2Y0NTMiLCJpYXQiOjE1MzczOTMyNjZ9.mlAotRoyZKq2I4GOUwNoW_o4ajU7Y1mZPZxBi-IW81Cdv1nlVBGnO0EviE9iN_EkOAHUplRsppHiN-1ndGEiNgYwpQLAnmcsZLBCwQSpkvVK5QKPmG7RwQGuXD6xaA4zHJzTjnX5kd3cmbHNV85oeZoowV-Gs2hhmpqZZmaJLaFZUFwgqHzrfWT-l5_PmGQ0E5jaR3P0GvwODhAZRXxL7P9GIqiv5NsZG4IqZlnqYreLm9quejIijYlBiyEZHvqQAUJQzQFWNXi5pkQgNiEbOz8qzxT3wgySYeVjceLyUzhr4mh8jOFgtn8ssRkaBRme2NnYjqv3DxwvLUyBp8aAYA';
 
 const registerCommand = (context, { command }) => {
     const disposable = vscode.commands.registerCommand(command, () => {
         const { code, editor, selection } = getEditingData();
-        const executableCommand = getExecutableCommand(command);
-        const child = exec(executableCommand, (error, stdout, stderr) => {
-            const refactoredCode = error || stderr || stdout;
-            editor.edit((builder) => builder.replace(selection, refactoredCode));
-        });
-        const stdinStream = new stream.Readable();
-        stdinStream.push(code);
-        stdinStream.push(null);
-        stdinStream.pipe(child.stdin);
+        const refactoring = command.replace('extension.', '').replace(/_/g, '-');
+        const refactoredCode = refactor({ code, refactoring });        
+        editor.edit((builder) => builder.replace(selection, refactoredCode));
     });
-
     context.subscriptions.push(disposable);
 };
 
-const getExecutableCommand = (command) => {
-    const id = command.replace('extension.', '').replace(/_/g, '-');
-    const configuration = getConfiguration();
-    const NODE_BIN = configuration['NODE_BIN'];
-    const settings = JSON.stringify(configuration);
-    return [
-        NODE_BIN, `"${BIN}"`,
-        '-r', id,
-        '-s', settings.replace(/"/g, '\\"')
-    ].join(' ');
+const refactor = ({ code, refactoring }) => {
+    try {
+        return API({
+            code,
+            license,
+            refactoring,
+            settings: getConfiguration()
+        });
+    } catch (error) {
+        return String(error);
+    }
+};
+
+const warmUp = () => {
+    for (let i = 0; i < WARMUP_COUNT; ++i) {
+        API({
+            code: WARMUP_CODE,
+            license,
+            refactoring: WARMUP_REFACTORING
+        });
+    }
 };
 
 const getEditingData = () => {
@@ -66,8 +71,11 @@ const getConfiguration = () => {
 
 const getCode = (editor, selection) => editor ? editor.document.getText(selection) : '';
 
-exports.activate = (context) => packageJson.contributes.commands.forEach(
-    (command) => registerCommand(context, command)
-);
+exports.activate = (context) => {
+    warmUp();
+    packageJson.contributes.commands.forEach(
+        (command) => registerCommand(context, command)
+    );
+};
 
 exports.deactivate = () => null;

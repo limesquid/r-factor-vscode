@@ -22,25 +22,7 @@
     ],
     "main": "./extension",
     "activationEvents": [
-        "onCommand:extension.add_classname",
-        "onCommand:extension.connect",
-        "onCommand:extension.connect_map_dispatch_to_props",
-        "onCommand:extension.connect_map_state_to_props",
-        "onCommand:extension.connect_merge_props",
-        "onCommand:extension.convert_to_arrow_component",
-        "onCommand:extension.convert_to_class_component",
-        "onCommand:extension.convert_to_function_component",
-        "onCommand:extension.disconnect",
-        "onCommand:extension.disconnect_map_dispatch_to_props",
-        "onCommand:extension.disconnect_map_state_to_props",
-        "onCommand:extension.disconnect_merge_props",
-        "onCommand:extension.generate_prop_types",
-        "onCommand:extension.move_default_props_and_prop_types_out_of_class",
-        "onCommand:extension.move_default_props_and_prop_types_to_class",
-        "onCommand:extension.sort_attributes",
-        "onCommand:extension.sort_imports",
-        "onCommand:extension.toggle_component_type",
-        "onCommand:extension.toggle_with_router_hoc"
+        "*"
     ],
     "contributes": {
         "commands": [
@@ -228,6 +210,12 @@
                     "default": true,
                     "description": "Semicolons"
                 },
+                "r-factor.svg-component-type": {
+                    "type": [ "string" ],
+                    "scope": "window",
+                    "default": "arrow",
+                    "description": "arrow, function or class"
+                },
                 "r-factor.trailing-commas": {
                     "type": [ "bool" ],
                     "scope": "window",
@@ -250,8 +238,7 @@
         }
     },
     "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
+        "postinstall": "node ./node_modules/vscode/bin/install"
     },
     "devDependencies": {
         "typescript": "^2.6.1",
