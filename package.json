@@ -48,6 +48,10 @@
         "command": "extension.connect_merge_props"
       },
       {
+        "title": "R-Factor: Convert SVG to component",
+        "command": "extension.convert_svg_to_component"
+      },
+      {
         "title": "R-Factor: Convert to arrow component",
         "command": "extension.convert_to_arrow_component"
       },
