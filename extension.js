@@ -1,9 +1,8 @@
 const vscode = require('vscode');
 const packageJson = require('./package.json');
 const { WARMUP_CODE, WARMUP_COUNT, WARMUP_REFACTORING } = require('./warm-up');
+const rFactor = require('./r-factor');
 
-const BIN = 'C:\\Users\\Kamil\\AppData\\Roaming\\Sublime Text 3\\Packages\\refucktoring\\dist\\index.js';
-const API = require(BIN);
 const license = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsTmFtZSI6ImthbWlsIGFkYW0gbWllbG5payIsImVtYWlsIjoibGVlMjA3QGdtYWlsLmNvbSIsImtleSI6ImM5NTJmNGU5MWUxMmMwZGE1ODllYmU5YmEwOGNjMTkzMDhlNDBiNmM5NjBlNGFjNDRmNTZjNGRkZGQ1Y2Y0NTMiLCJpYXQiOjE1MzczOTMyNjZ9.mlAotRoyZKq2I4GOUwNoW_o4ajU7Y1mZPZxBi-IW81Cdv1nlVBGnO0EviE9iN_EkOAHUplRsppHiN-1ndGEiNgYwpQLAnmcsZLBCwQSpkvVK5QKPmG7RwQGuXD6xaA4zHJzTjnX5kd3cmbHNV85oeZoowV-Gs2hhmpqZZmaJLaFZUFwgqHzrfWT-l5_PmGQ0E5jaR3P0GvwODhAZRXxL7P9GIqiv5NsZG4IqZlnqYreLm9quejIijYlBiyEZHvqQAUJQzQFWNXi5pkQgNiEbOz8qzxT3wgySYeVjceLyUzhr4mh8jOFgtn8ssRkaBRme2NnYjqv3DxwvLUyBp8aAYA';
 
 const registerCommand = (context, { command }) => {
@@ -18,7 +17,7 @@ const registerCommand = (context, { command }) => {
 
 const refactor = ({ code, refactoring }) => {
   try {
-    return API({
+    return rFactor({
       code,
       license,
       refactoring,
@@ -31,7 +30,7 @@ const refactor = ({ code, refactoring }) => {
 
 const warmUp = () => {
   for (let i = 0; i < WARMUP_COUNT; ++i) {
-    API({
+    rFactor({
       code: WARMUP_CODE,
       license,
       refactoring: WARMUP_REFACTORING
