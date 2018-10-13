@@ -120,67 +120,91 @@
       "title": "R-Factor configuration",
       "properties": {
         "r-factor.component-name-collision-pattern": {
-          "type": [ "string" ],
+          "type": [
+            "string"
+          ],
           "scope": "window",
           "default": "${name}Component",
           "description": "Component name collision pattern"
         },
         "r-factor.component-superclass": {
-          "type": [ "string" ],
+          "type": [
+            "string"
+          ],
           "scope": "window",
           "default": "Component",
           "description": "Component superclass (Component or PureComponent)"
         },
         "r-factor.default-component-name": {
-          "type": [ "string" ],
+          "type": [
+            "string"
+          ],
           "scope": "window",
           "default": "Component",
           "description": "Default component name"
         },
         "r-factor.default-hoc-component-name": {
-          "type": [ "string" ],
+          "type": [
+            "string"
+          ],
           "scope": "window",
           "default": "InnerComponent",
           "description": "Default HOC component name"
         },
         "r-factor.end-of-line": {
-          "type": [ "string" ],
+          "type": [
+            "string"
+          ],
           "scope": "window",
           "default": "\n",
           "description": "End of line characters"
         },
         "r-factor.functional-component-type": {
-          "type": [ "string" ],
+          "type": [
+            "string"
+          ],
           "scope": "window",
           "default": "arrow",
           "description": "Functional component type (arrow or function)"
         },
         "r-factor.indent": {
-          "type": [ "string", "number" ],
+          "type": [
+            "string",
+            "number"
+          ],
           "scope": "window",
           "default": 2,
           "description": "Indent"
         },
         "r-factor.map-dispatch-to-props-name": {
-          "type": [ "string" ],
+          "type": [
+            "string"
+          ],
           "scope": "window",
           "default": "mapDispatchToProps",
           "description": "mapDispatchToProps name"
         },
         "r-factor.map-state-to-props-name": {
-          "type": [ "string" ],
+          "type": [
+            "string"
+          ],
           "scope": "window",
           "default": "mapStateToProps",
           "description": "mapStateToProps name"
         },
         "r-factor.merge-props-name": {
-          "type": [ "string" ],
+          "type": [
+            "string"
+          ],
           "scope": "window",
           "default": "mergeProps",
           "description": "mergeProps name"
         },
         "r-factor.modules-order": {
-          "type": [ "string", "array" ],
+          "type": [
+            "string",
+            "array"
+          ],
           "scope": "window",
           "default": [
             "react",
@@ -204,37 +228,49 @@
           "description": "Modules order"
         },
         "r-factor.quotes": {
-          "type": [ "string" ],
+          "type": [
+            "string"
+          ],
           "scope": "window",
           "default": "single",
           "description": "Quotes (backtick, single or double)"
         },
         "r-factor.semicolons": {
-          "type": [ "bool" ],
+          "type": [
+            "bool"
+          ],
           "scope": "window",
           "default": true,
           "description": "Semicolons"
         },
         "r-factor.svg-component-type": {
-          "type": [ "string" ],
+          "type": [
+            "string"
+          ],
           "scope": "window",
           "default": "arrow",
           "description": "arrow, function or class"
         },
         "r-factor.trailing-commas": {
-          "type": [ "bool" ],
+          "type": [
+            "bool"
+          ],
           "scope": "window",
           "default": false,
           "description": "Trailing commas"
         },
         "r-factor.use-map-dispatch-to-props-shorthand": {
-          "type": [ "bool" ],
+          "type": [
+            "bool"
+          ],
           "scope": "window",
           "default": false,
           "description": "Prefer object version of mapDispatchToProps"
         },
         "r-factor.NODE_BIN": {
-          "type": [ "string" ],
+          "type": [
+            "string"
+          ],
           "scope": "window",
           "default": "node",
           "description": "Node.js binary path"
@@ -246,11 +282,7 @@
     "postinstall": "node ./node_modules/vscode/bin/install"
   },
   "devDependencies": {
-    "typescript": "^2.6.1",
-    "vscode": "^1.1.6",
-    "eslint": "^4.11.0",
-    "@types/node": "^7.0.43",
-    "@types/mocha": "^2.2.42"
+    "vscode": "^1.1.6"
   },
   "icon": "images/r-factor.png"
 }
