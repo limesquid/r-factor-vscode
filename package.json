@@ -117,7 +117,7 @@
       }
     ],
     "configuration": {
-      "title": "R-Factor configuration",
+      "title": "R-Factor",
       "properties": {
         "r-factor.component-name-collision-pattern": {
           "type": [
