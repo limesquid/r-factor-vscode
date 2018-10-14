@@ -2,13 +2,37 @@ const vscode = require('vscode');
 const packageJson = require('./package.json');
 const { WARMUP_CODE, WARMUP_COUNT, WARMUP_REFACTORING } = require('./warm-up');
 const rFactor = require('./r-factor');
+const { readLicense, writeLicense } = require('./license-utils');
 
-const license = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsTmFtZSI6ImthbWlsIGFkYW0gbWllbG5payIsImVtYWlsIjoibGVlMjA3QGdtYWlsLmNvbSIsImtleSI6ImM5NTJmNGU5MWUxMmMwZGE1ODllYmU5YmEwOGNjMTkzMDhlNDBiNmM5NjBlNGFjNDRmNTZjNGRkZGQ1Y2Y0NTMiLCJpYXQiOjE1MzczOTMyNjZ9.mlAotRoyZKq2I4GOUwNoW_o4ajU7Y1mZPZxBi-IW81Cdv1nlVBGnO0EviE9iN_EkOAHUplRsppHiN-1ndGEiNgYwpQLAnmcsZLBCwQSpkvVK5QKPmG7RwQGuXD6xaA4zHJzTjnX5kd3cmbHNV85oeZoowV-Gs2hhmpqZZmaJLaFZUFwgqHzrfWT-l5_PmGQ0E5jaR3P0GvwODhAZRXxL7P9GIqiv5NsZG4IqZlnqYreLm9quejIijYlBiyEZHvqQAUJQzQFWNXi5pkQgNiEbOz8qzxT3wgySYeVjceLyUzhr4mh8jOFgtn8ssRkaBRme2NnYjqv3DxwvLUyBp8aAYA';
+const refactoringCommands = [
+  'add_classname',
+  'connect',
+  'connect_map_dispatch_to_props',
+  'connect_map_state_to_props',
+  'connect_merge_props',
+  'convert_svg_to_component',
+  'convert_to_arrow_component',
+  'convert_to_class_component',
+  'convert_to_function_component',
+  'disconnect',
+  'disconnect_map_dispatch_to_props',
+  'disconnect_map_state_to_props',
+  'disconnect_merge_props',
+  'generate_prop_types',
+  'move_default_props_out_of_class',
+  'move_default_props_to_class',
+  'move_prop_types_out_of_class',
+  'move_prop_types_to_class',
+  'sort_attributes',
+  'sort_imports',
+  'toggle_component_type',
+  'toggle_with_router_hoc'
+];
 
-const registerCommand = (context, { command }) => {
-  const disposable = vscode.commands.registerCommand(command, () => {
+const registerRefactoringCommand = (context, command) => {
+  const disposable = vscode.commands.registerCommand(`extension.${command}`, () => {
     const { code, editor, selection } = getEditingData();
-    const refactoring = command.replace('extension.', '').replace(/_/g, '-');
+    const refactoring = command.replace(/_/g, '-');
     const refactoredCode = refactor({ code, refactoring });
     editor.edit((builder) => builder.replace(selection, refactoredCode));
   });
@@ -19,7 +43,7 @@ const refactor = ({ code, refactoring }) => {
   try {
     return rFactor({
       code,
-      license,
+      license: readLicense(),
       refactoring,
       settings: getConfiguration()
     });
@@ -32,7 +56,7 @@ const warmUp = () => {
   for (let i = 0; i < WARMUP_COUNT; ++i) {
     rFactor({
       code: WARMUP_CODE,
-      license,
+      license: readLicense(),
       refactoring: WARMUP_REFACTORING
     });
   }
@@ -71,10 +95,18 @@ const getConfiguration = () => {
 const getCode = (editor, selection) => editor ? editor.document.getText(selection) : '';
 
 exports.activate = (context) => {
-  warmUp();
-  packageJson.contributes.commands.forEach(
-    (command) => registerCommand(context, command)
-  );
+  setTimeout(warmUp);
+
+  const disposable = vscode.commands.registerCommand('extension.enter_license_key', () => {
+    vscode.window.showInputBox({ prompt: 'Enter your R-Factor license key' })
+      .then(writeLicense)
+      .then(() => {
+        vscode.window.showInformationMessage('Your R-Factor license key has been successfully added.');
+      });
+  });
+  context.subscriptions.push(disposable);
+
+  refactoringCommands.forEach((command) => registerRefactoringCommand(context, command));
 };
 
 exports.deactivate = () => null;

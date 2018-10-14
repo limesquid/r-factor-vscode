@@ -80,6 +80,10 @@
         "command": "extension.disconnect_merge_props"
       },
       {
+        "title": "R-Factor: Enter License Key",
+        "command": "extension.enter_license_key"
+      },
+      {
         "title": "R-Factor: Generate propTypes",
         "command": "extension.generate_prop_types"
       },
