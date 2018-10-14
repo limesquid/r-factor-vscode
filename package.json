@@ -276,5 +276,5 @@
   "devDependencies": {
     "vscode": "^1.1.6"
   },
-  "icon": "images/r-factor.png"
+  "icon": "https://r-factor.io/static/media/r-factor-icon.5bd12472.png"
 }
