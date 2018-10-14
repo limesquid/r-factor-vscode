@@ -53,12 +53,15 @@ const refactor = ({ code, refactoring }) => {
 };
 
 const warmUp = () => {
-  for (let i = 0; i < WARMUP_COUNT; ++i) {
-    rFactor({
-      code: WARMUP_CODE,
-      license: readLicense(),
-      refactoring: WARMUP_REFACTORING
-    });
+  const license = readLicense();
+  if (license) {
+    for (let i = 0; i < WARMUP_COUNT; ++i) {
+      rFactor({
+        code: WARMUP_CODE,
+        license,
+        refactoring: WARMUP_REFACTORING
+      });
+    }
   }
 };
 
@@ -95,12 +98,13 @@ const getConfiguration = () => {
 const getCode = (editor, selection) => editor ? editor.document.getText(selection) : '';
 
 exports.activate = (context) => {
-  setTimeout(warmUp);
+  warmUp();
 
   const disposable = vscode.commands.registerCommand('extension.enter_license_key', () => {
     vscode.window.showInputBox({ prompt: 'Enter your R-Factor license key' })
       .then(writeLicense)
       .then(() => {
+        warmUp();
         vscode.window.showInformationMessage('Your R-Factor license key has been successfully added.');
       });
   });
