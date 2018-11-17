@@ -88,20 +88,12 @@
         "command": "extension.generate_prop_types"
       },
       {
-        "title": "R-Factor: Move defaultProps out of class",
-        "command": "extension.move_default_props_out_of_class"
+        "label": "R-Factor: Move defaultProps & propTypes out of class",
+        "command": "extension:move_default_props_and_prop_types_out_of_class"
       },
       {
-        "title": "R-Factor: Move defaultProps to class",
-        "command": "extension.move_default_props_to_class"
-      },
-      {
-        "title": "R-Factor: Move propTypes out of class",
-        "command": "extension.move_prop_types_out_of_class"
-      },
-      {
-        "title": "R-Factor: Move propTypes to class",
-        "command": "extension.move_prop_types_to_class"
+        "label": "R-Factor: Move defaultProps & propTypes to class",
+        "command": "extension:move_default_props_and_prop_types_to_class"
       },
       {
         "title": "R-Factor: Sort attributes in objects",
