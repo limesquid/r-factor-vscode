@@ -32,7 +32,10 @@ const registerRefactoringCommand = (context, command) => {
     const { code, editor, selection } = getEditingData();
     const refactoring = command.replace(/_/g, '-');
     const refactoredCode = refactor({ code, refactoring });
-    editor.edit((builder) => builder.replace(selection, refactoredCode));
+    editor.edit((builder) => {
+      builder.delete(selection);
+      builder.insert(new vscode.Position(0, 0), refactoredCode);
+    });
   });
   context.subscriptions.push(disposable);
 };
@@ -72,9 +75,10 @@ const getEditingData = () => {
 
 const getSelection = (editor) => {
   if (editor.selection.isEmpty) {
+    const line = editor.document.lineAt(editor.document.lineCount - 1);
     return new editor.document.validateRange(new vscode.Range(
       new vscode.Position(0, 0),
-      new vscode.Position(editor.document.lineCount + 100, 0)
+      new vscode.Position(editor.document.lineCount - 1, line.text.length)
     ));
   }
   return editor.selection;
