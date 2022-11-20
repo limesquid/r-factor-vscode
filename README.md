@@ -4,7 +4,7 @@ R-Factor - React & Redux Refactoring Tools
 
 ## Features
 
-For full list of features see https://r-factor.io/
+For full list of features see https://r-factor.org/
 
 ## Requirements
 
@@ -12,4 +12,4 @@ For full list of features see https://r-factor.io/
 
 ## Extension Settings
 
-For full list of settings & documentation see https://r-factor.io/documentation/
+For full list of settings & documentation see https://r-factor.org/documentation/
