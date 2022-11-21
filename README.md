@@ -23,7 +23,7 @@
   </p>
 </div>
 
-## Installation
+## Install
 
 ### Stable version
 
