@@ -32,6 +32,8 @@ wget -c https://github.com/limesquid/r-factor-vscode/archive/refs/tags/1.0.0.zip
 mkdir -p ~/.vscode/extensions
 unzip r-factor-vscode.zip -d ~/.vscode/extensions
 rm r-factor-vscode.zip
+cd ~/.vscode/extensions/r-factor-vscode
+npm install
 ```
 
 ### Development (master)
@@ -41,4 +43,6 @@ wget -c https://github.com/limesquid/r-factor-vscode/archive/refs/heads/master.z
 mkdir -p ~/.vscode/extensions
 unzip r-factor-vscode.zip -d ~/.vscode/extensions
 rm r-factor-vscode.zip
+cd ~/.vscode/extensions/r-factor-vscode-master
+npm install
 ```
