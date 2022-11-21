@@ -36,7 +36,7 @@ cd ~/.vscode/extensions/r-factor-vscode
 npm install
 ```
 
-### Development (master)
+### Latest (master)
 
 ```Shell
 wget -c https://github.com/limesquid/r-factor-vscode/archive/refs/heads/master.zip -O r-factor-vscode.zip
