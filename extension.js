@@ -1,6 +1,6 @@
+const rFactor = require('r-factor');
 const vscode = require('vscode');
 const packageJson = require('./package.json');
-const rFactor = require('./r-factor');
 const { WARMUP_CODE, WARMUP_COUNT, WARMUP_REFACTORING } = require('./warm-up');
 
 const refactoringCommands = [

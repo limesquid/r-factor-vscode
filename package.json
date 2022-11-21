@@ -30,6 +30,9 @@
     "url": "https://github.com/limesquid/r-factor-vscode/issues"
   },
   "homepage": "https://r-factor.org",
+  "dependencies": {
+    "r-factor": "^1.0.0"
+  },
   "activationEvents": [
     "*"
   ],
