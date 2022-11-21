@@ -68,16 +68,13 @@ const getEditingData = () => {
 };
 
 const getSelection = (editor) => {
-  if (editor.selection.isEmpty) {
-    const line = editor.document.lineAt(editor.document.lineCount - 1);
-    return new editor.document.validateRange(
-      new vscode.Range(
-        new vscode.Position(0, 0),
-        new vscode.Position(editor.document.lineCount - 1, line.text.length),
-      ),
-    );
+  if (!editor.selection.isEmpty) {
+    return editor.selection;
   }
-  return editor.selection;
+
+  const firstLine = editor.document.lineAt(0);
+  const lastLine = editor.document.lineAt(editor.document.lineCount - 1);
+  return new vscode.Range(firstLine.range.start, lastLine.range.end);
 };
 
 const getConfiguration = () => {
