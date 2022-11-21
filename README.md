@@ -7,6 +7,8 @@
 
   <p>React & Redux Refactoring Tools</p>
 
+  <p>https://r-factor.org/</p>
+
   <br/>
 
   <sup>
@@ -14,7 +16,6 @@
     <a href="https://github.com/limesquid/r-factor-vscode/blob/master/LICENSE">
       <img src="https://img.shields.io/github/license/limesquid/r-factor-vscode" alt="license" />
     </a>
-    <img src="https://img.shields.io/node/v/r-factor-vscode" alt="node version" />
   </sup>
 </div>
 
