@@ -1,14 +1,15 @@
 {
-  "name": "r-factor",
+  "name": "r-factor-vscode",
   "version": "1.0.0",
-  "publisher": "r-factor",
+  "description": "React & Redux Refactoring Tools",
+  "displayName": "R-Factor",
+  "license": "MIT",
+  "publisher": "limesquid",
+  "main": "./extension",
   "engines": {
-    "node": ">=6.0.0",
+    "node": ">=8.0.0",
     "vscode": "^1.24.0"
   },
-  "license": "MIT",
-  "displayName": "R-Factor",
-  "description": "React & Redux Refactoring Tools",
   "categories": [
     "Other"
   ],
@@ -21,7 +22,14 @@
     "convert",
     "transform"
   ],
-  "main": "./extension",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/limesquid/r-factor-vscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/limesquid/r-factor-vscode/issues"
+  },
+  "homepage": "https://r-factor.org",
   "activationEvents": [
     "*"
   ],
@@ -262,5 +270,5 @@
       }
     }
   },
-  "icon": "https://r-factor.io/r-factor-icon.png"
+  "icon": "https://r-factor.org/r-factor-icon.png"
 }
