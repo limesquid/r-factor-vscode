@@ -32,6 +32,7 @@ wget -c https://github.com/limesquid/r-factor-vscode/archive/refs/tags/1.0.0.zip
 mkdir -p ~/.vscode/extensions
 unzip r-factor-vscode.zip -d ~/.vscode/extensions
 rm r-factor-vscode.zip
+mv ~/.vscode/extensions/r-factor-vscode-1.0.0 ~/.vscode/extensions/r-factor-vscode
 cd ~/.vscode/extensions/r-factor-vscode
 npm install
 ```
