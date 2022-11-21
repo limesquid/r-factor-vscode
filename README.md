@@ -43,6 +43,13 @@ wget -c https://github.com/limesquid/r-factor-vscode/archive/refs/heads/master.z
 mkdir -p ~/.vscode/extensions
 unzip r-factor-vscode.zip -d ~/.vscode/extensions
 rm r-factor-vscode.zip
-cd ~/.vscode/extensions/r-factor-vscode-master
+mv ~/.vscode/extensions/r-factor-vscode-master ~/.vscode/extensions/r-factor-vscode
+cd ~/.vscode/extensions/r-factor-vscode
 npm install
+```
+
+## Uninstall
+
+```Shell
+rm -rf ~/.vscode/extensions/r-factor-vscode
 ```
