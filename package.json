@@ -4,7 +4,7 @@
   "description": "React & Redux Refactoring Tools",
   "displayName": "R-Factor",
   "license": "MIT",
-  "publisher": "limesquid",
+  "publisher": "LimeSquid",
   "main": "./extension",
   "engines": {
     "node": ">=8.0.0",

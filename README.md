@@ -18,19 +18,22 @@
   </sup>
 </div>
 
+## Installation
 
+### Stable
 
+```Shell
+wget -c https://github.com/limesquid/r-factor-vscode/archive/refs/tags/1.0.0.zip -O r-factor-vscode.zip
+mkdir -p ~/.vscode/extensions
+unzip r-factor-vscode.zip -d ~/.vscode/extensions
+rm r-factor-vscode.zip
+```
 
-# R-Factor extension for Visual Studio Code
+### Development
 
-## Features
-
-For full list of features see https://r-factor.org/
-
-## Requirements
-
-- node.js 6.0.0+
-
-## Extension Settings
-
-For full list of settings & documentation see https://r-factor.org/documentation/
+```Shell
+wget -c https://github.com/limesquid/r-factor-vscode/archive/refs/heads/master.zip -O r-factor-vscode.zip
+mkdir -p ~/.vscode/extensions
+unzip r-factor-vscode.zip -d ~/.vscode/extensions
+rm r-factor-vscode.zip
+```
