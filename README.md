@@ -33,7 +33,7 @@
 ### Stable version
 
 ```Shell
-wget -c https://github.com/limesquid/r-factor-vscode/archive/refs/tags/1.0.0.zip -O r-factor-vscode.zip
+wget -c https://github.com/limesquid/r-factor-vscode/archive/refs/tags/1.0.1.zip -O r-factor-vscode.zip
 mkdir -p ~/.vscode/extensions
 unzip r-factor-vscode.zip -d ~/.vscode/extensions
 rm r-factor-vscode.zip
